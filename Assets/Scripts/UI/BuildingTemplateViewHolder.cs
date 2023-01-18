@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingTemplateViewHolder : MonoBehaviour
 {
     [SerializeField] private BuildingTemplateView _buildingTemplateViewPrefab;
     [SerializeField] private Transform _buildingTemplatesViewContainer;
     [SerializeField] private List<Building> _buildings = new List<Building>();
+    [SerializeField] private BuildingPlace _buildingPlace;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class BuildingTemplateViewHolder : MonoBehaviour
         for (int i = 0; i < _buildings.Count; i++)
         {
             BuildingTemplateView clone = Instantiate(_buildingTemplateViewPrefab, _buildingTemplatesViewContainer);
-            clone.Init(_buildings[i]);
+            clone.Init(_buildings[i], _buildingPlace);
         }
     }
 

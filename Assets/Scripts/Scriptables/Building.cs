@@ -11,6 +11,7 @@ public class Building : ScriptableObject
     [SerializeField] private List<RequaredMineral> _requaredMinerals;
 
     public string Name => _entity.ToString();
+    public Buildings Entity => _entity;
     public Sprite Sprite => _sprite;
     public Color Color => _color;
     public List<GeneratedMineral> GeneratedMinerals => _generatedMinerals;
