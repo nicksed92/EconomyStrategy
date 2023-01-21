@@ -176,9 +176,12 @@ MonoBehaviour:
   _sawMillsContainer: {fileID: 789114212}
   _stoneMinesContainer: {fileID: 830696934}
   _goldMinesContainer: {fileID: 1374769184}
-  _sawMill: {fileID: 4541465829664586747, guid: 3bc0a85adec359241a8c1c969cacd350, type: 3}
+  _sawMill: {fileID: 7325118473559829126, guid: 3bc0a85adec359241a8c1c969cacd350, type: 3}
   _stoneMine: {fileID: 8126305073334409404, guid: c9ae3af70129ebd4f8020ed3efae7211, type: 3}
   _goldMine: {fileID: 6598698049521296107, guid: 499b7b228c80abf47bd8d84b0d7d0a61, type: 3}
+  _sawMillsPlaced: 0
+  _stoneMinesPlaced: 0
+  _goldMinesPlaced: 0
 --- !u!1 &67490971
 GameObject:
   m_ObjectHideFlags: 0
