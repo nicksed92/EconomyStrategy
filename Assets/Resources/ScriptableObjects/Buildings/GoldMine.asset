@@ -18,12 +18,9 @@ MonoBehaviour:
   _generatedMinerals:
   - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
     _count: 1
-    _minutes: 4
-  - _mineral: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
-    _count: 5
-    _minutes: 4
+    _minutes: 3
   _requaredMinerals:
   - _mineral: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}
     _count: 6
   - _mineral: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
-    _count: 6
+    _count: 3

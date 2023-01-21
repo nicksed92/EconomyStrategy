@@ -179,9 +179,7 @@ MonoBehaviour:
   _sawMill: {fileID: 7325118473559829126, guid: 3bc0a85adec359241a8c1c969cacd350, type: 3}
   _stoneMine: {fileID: 7325118473559829126, guid: f063bdb3e61f326428b0a3e16c85290b, type: 3}
   _goldMine: {fileID: 7325118473559829126, guid: 1047d75a727673241893239f330672dc, type: 3}
-  _sawMillsPlaced: 0
-  _stoneMinesPlaced: 0
-  _goldMinesPlaced: 0
+  _playerData: {fileID: 11400000, guid: f00560761d8c1a5449e9ccc563a053ea, type: 2}
 --- !u!1 &67490971
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,8 +5707,9 @@ GameObject:
   - component: {fileID: 1802690475}
   - component: {fileID: 1802690477}
   - component: {fileID: 1802690476}
+  - component: {fileID: 1802690478}
   m_Layer: 5
-  m_Name: Resources
+  m_Name: Minerals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5779,6 +5778,28 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1802690478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802690474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba83b01eff75da4da5b9b529b34fe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: f00560761d8c1a5449e9ccc563a053ea, type: 2}
+  _wood: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}
+  _stone: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
+  _goldenNugget: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
+  _woodImage: {fileID: 625300848}
+  _stoneImage: {fileID: 1945124135}
+  _goldenNuggetImage: {fileID: 1746317944}
+  _woodsCountText: {fileID: 1411670218}
+  _stonesCountText: {fileID: 504689706}
+  _goldenNuggetsCountText: {fileID: 507064473}
 --- !u!1 &1808318395
 GameObject:
   m_ObjectHideFlags: 0
@@ -6161,6 +6182,51 @@ Transform:
   - {fileID: 173326858}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1868090888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868090890}
+  - component: {fileID: 1868090889}
+  m_Layer: 0
+  m_Name: PlayerData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1868090889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868090888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64e2c25095f1c743b4e7737c97d875e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: f00560761d8c1a5449e9ccc563a053ea, type: 2}
+--- !u!4 &1868090890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868090888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1878808590
 GameObject:

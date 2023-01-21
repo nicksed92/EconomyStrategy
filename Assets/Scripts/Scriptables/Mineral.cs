@@ -7,5 +7,6 @@ public class Mineral : ScriptableObject
     [SerializeField] private Sprite _sprite;
 
     public string Name => _entity.ToString();
+    public Minerals Entity => _entity;
     public Sprite Sprite => _sprite;
 }

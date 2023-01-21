@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlacedBuilding : MonoBehaviour
@@ -9,6 +11,11 @@ public class PlacedBuilding : MonoBehaviour
     private SpriteRenderer _shadow;
 
     private void Start()
+    {
+        Init();
+    }
+
+    private void Init()
     {
         _sprite = GetComponent<SpriteRenderer>();
         _shadow = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -22,6 +29,35 @@ public class PlacedBuilding : MonoBehaviour
         CollectResourceInfo collectResourceInfo = buildingUICanvasClone.transform.GetChild(1).GetComponent<CollectResourceInfo>();
 
         collectResourceInfo.Init(_building);
-        filledSlider.Init(_building, collectResourceInfo);
+        filledSlider.Init(_building.Color);
+
+        Work(filledSlider, collectResourceInfo);
+    }
+
+    private void Work(FilledSlider filledSlider, CollectResourceInfo collectResourceInfo)
+    {
+        StartCoroutine(GenerateMineral(filledSlider, collectResourceInfo));
+    }
+
+    private IEnumerator GenerateMineral(FilledSlider filledSlider, CollectResourceInfo collectResourceInfo)
+    {
+        ulong minutes = _building.GeneratedMinerals[0].Minutes;
+        float extractingProgress = 0f;
+        float seconds = minutes * 60f;
+
+        while (true)
+        {
+            extractingProgress += Time.deltaTime / seconds;
+            filledSlider.SetImageFilling(extractingProgress);
+
+            if (extractingProgress >= 1f)
+            {
+                collectResourceInfo.ShowInfo();
+                GlobalEvents.OnMineralExtracted.Invoke(_building.GeneratedMinerals[0].Mineral);
+                extractingProgress = 0f;
+            }
+
+            yield return null;
+        }
     }
 }

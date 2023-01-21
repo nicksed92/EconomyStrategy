@@ -14,37 +14,34 @@ public class BuildingPlace : MonoBehaviour
     [SerializeField] private PlacedBuilding _stoneMine;
     [SerializeField] private PlacedBuilding _goldMine;
 
-    [SerializeField] private int _sawMillsPlaced = 0;
-    [SerializeField] private int _stoneMinesPlaced = 0;
-    [SerializeField] private int _goldMinesPlaced = 0;
+    [SerializeField] private PlayerData _playerData;
 
     public void Place(Buildings building)
     {
         switch (building)
         {
             case Buildings.SawMill:
-                PlaceBuilding(_sawMill, _sawMillsContainer, _treesContainer, ref _sawMillsPlaced);
+                _playerData.SawMills = PlaceBuilding(_sawMill, _sawMillsContainer, _treesContainer, _playerData.SawMills);
                 break;
             case Buildings.StoneMine:
-                PlaceBuilding(_stoneMine, _stoneMinesContainer, _stonesContainer, ref _stoneMinesPlaced);
+                _playerData.StoneMines = PlaceBuilding(_stoneMine, _stoneMinesContainer, _stonesContainer, _playerData.StoneMines);
                 break;
             case Buildings.GoldMine:
-                PlaceBuilding(_goldMine, _goldMinesContainer, _goldOresContainer, ref _goldMinesPlaced);
+                _playerData.GoldMines = PlaceBuilding(_goldMine, _goldMinesContainer, _goldOresContainer, _playerData.GoldMines);
                 break;
         }
     }
 
-    private void PlaceBuilding(PlacedBuilding building, Transform buildingsContainer, Transform resourceContainer, ref int buldingsPlaced)
+    private int PlaceBuilding(PlacedBuilding building, Transform buildingsContainer, Transform resourceContainer, int buldingsPlaced)
     {
         if (buldingsPlaced > resourceContainer.childCount - 1)
-            return;
-
+            return buldingsPlaced;
 
         var child = resourceContainer.GetChild(buldingsPlaced);
 
         var clone = Instantiate(building, buildingsContainer);
         clone.transform.position = child.localPosition;
-        buldingsPlaced++;
         child.gameObject.SetActive(false);
+        return ++buldingsPlaced;
     }
 }
