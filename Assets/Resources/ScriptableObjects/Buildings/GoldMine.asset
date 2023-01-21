@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entity: 2
   _sprite: {fileID: -436777808, guid: 0160fedec6b84c2468a2683db539eead, type: 3}
-  _color: {r: 0.3019608, g: 0.27800664, b: 0.14901961, a: 0.78431374}
+  _color: {r: 0.7924528, g: 0.69000566, b: 0.12260585, a: 0.78431374}
   _generatedMinerals:
   - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
     _count: 1

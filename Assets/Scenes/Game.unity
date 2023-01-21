@@ -177,8 +177,8 @@ MonoBehaviour:
   _stoneMinesContainer: {fileID: 830696934}
   _goldMinesContainer: {fileID: 1374769184}
   _sawMill: {fileID: 7325118473559829126, guid: 3bc0a85adec359241a8c1c969cacd350, type: 3}
-  _stoneMine: {fileID: 8126305073334409404, guid: c9ae3af70129ebd4f8020ed3efae7211, type: 3}
-  _goldMine: {fileID: 6598698049521296107, guid: 499b7b228c80abf47bd8d84b0d7d0a61, type: 3}
+  _stoneMine: {fileID: 7325118473559829126, guid: f063bdb3e61f326428b0a3e16c85290b, type: 3}
+  _goldMine: {fileID: 7325118473559829126, guid: 1047d75a727673241893239f330672dc, type: 3}
   _sawMillsPlaced: 0
   _stoneMinesPlaced: 0
   _goldMinesPlaced: 0
@@ -3271,7 +3271,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

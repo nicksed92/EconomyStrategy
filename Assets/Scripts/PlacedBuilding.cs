@@ -3,9 +3,8 @@ using UnityEngine;
 public class PlacedBuilding : MonoBehaviour
 {
     [SerializeField] private Building _building;
-    [SerializeField] private RectTransform _timerCanvas;
+    [SerializeField] private Canvas _buildingUICanvas;
 
-    private FilledSlider _filledSlider;
     private SpriteRenderer _sprite;
     private SpriteRenderer _shadow;
 
@@ -16,7 +15,13 @@ public class PlacedBuilding : MonoBehaviour
         _sprite.sprite = _building.Sprite;
         _shadow.sprite = _building.Sprite;
 
-        var clone = Instantiate(_timerCanvas, transform);
-        clone.GetChild(0).GetComponent<FilledSlider>().Init(_building.GeneratedMinerals[0].Minutes);
+        var buildingUICanvasClone = Instantiate(_buildingUICanvas, transform);
+        buildingUICanvasClone.worldCamera = Camera.main;
+
+        FilledSlider filledSlider = buildingUICanvasClone.transform.GetChild(0).GetComponent<FilledSlider>();
+        CollectResourceInfo collectResourceInfo = buildingUICanvasClone.transform.GetChild(1).GetComponent<CollectResourceInfo>();
+
+        collectResourceInfo.Init(_building);
+        filledSlider.Init(_building, collectResourceInfo);
     }
 }

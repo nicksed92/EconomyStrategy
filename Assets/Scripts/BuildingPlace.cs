@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BuildingPlace : MonoBehaviour
 {
@@ -12,8 +11,8 @@ public class BuildingPlace : MonoBehaviour
     [SerializeField] private Transform _goldMinesContainer;
 
     [SerializeField] private PlacedBuilding _sawMill;
-    [SerializeField] private Transform _stoneMine;
-    [SerializeField] private Transform _goldMine;
+    [SerializeField] private PlacedBuilding _stoneMine;
+    [SerializeField] private PlacedBuilding _goldMine;
 
     [SerializeField] private int _sawMillsPlaced = 0;
     [SerializeField] private int _stoneMinesPlaced = 0;
@@ -27,10 +26,10 @@ public class BuildingPlace : MonoBehaviour
                 PlaceBuilding(_sawMill, _sawMillsContainer, _treesContainer, ref _sawMillsPlaced);
                 break;
             case Buildings.StoneMine:
-                //PlaceBuilding(_stoneMine, _stoneMinesContainer, _stonesContainer, ref _stoneMinesPlaced);
+                PlaceBuilding(_stoneMine, _stoneMinesContainer, _stonesContainer, ref _stoneMinesPlaced);
                 break;
             case Buildings.GoldMine:
-                //PlaceBuilding(_goldMine, _goldMinesContainer, _goldOresContainer, ref _goldMinesPlaced);
+                PlaceBuilding(_goldMine, _goldMinesContainer, _goldOresContainer, ref _goldMinesPlaced);
                 break;
         }
     }
