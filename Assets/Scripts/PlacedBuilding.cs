@@ -29,7 +29,7 @@ public class PlacedBuilding : MonoBehaviour
         CollectResourceInfo collectResourceInfo = buildingUICanvasClone.transform.GetChild(1).GetComponent<CollectResourceInfo>();
 
         collectResourceInfo.Init(_building);
-        filledSlider.Init(_building.Color);
+        filledSlider.Init(_building.GeneratedMinerals[0].Mineral.Color);
 
         Work(filledSlider, collectResourceInfo);
     }

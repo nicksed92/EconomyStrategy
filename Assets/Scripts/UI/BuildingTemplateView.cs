@@ -18,13 +18,14 @@ public class BuildingTemplateView : MonoBehaviour
     public void Init(Building building, BuildingPlace buildingPlace)
     {
         _nameText.text = building.Name;
-        _backGround.color = building.Color;
+        _backGround.color = building.GeneratedMinerals[0].Mineral.Color;
         _buildingSprite.sprite = building.Sprite;
         _buildingShadow.sprite = building.Sprite;
 
         SetRequaredMineralsView(building.RequaredMinerals);
         SetGeneratedMineralsView(building.GeneratedMinerals);
 
+        //_buildButton.GetComponent<Image>().color = building.GeneratedMinerals[0].Mineral.Color;
         _buildButton.onClick.AddListener(delegate { OnBuildButtonClicked(building.Entity, buildingPlace); });
     }
 

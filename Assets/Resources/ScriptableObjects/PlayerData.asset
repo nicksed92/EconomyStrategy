@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da86cd7234a37e4eae0efd4cd26be11, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _woodsCount: 0
-  _stonesCount: 0
-  _goldenNuggetsCount: 0
-  _sawMillsCount: 0
-  _stoneMinesCount: 0
-  _goldMinesCount: 0
+  _woods: 26
+  _stones: 5
+  _goldenNuggets: 0
+  _sawMills: 1
+  _stoneMines: 2
+  _goldMines: 0

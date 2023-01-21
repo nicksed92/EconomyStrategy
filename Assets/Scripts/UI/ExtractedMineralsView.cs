@@ -21,9 +21,7 @@ public class ExtractedMineralsView : MonoBehaviour
 
     private void Awake()
     {
-        PlayerdDataController.OnWoodsCountChanged.AddListener(OnWoodsContChange);
-        PlayerdDataController.OnStonesCountChanged.AddListener(OnStonesContChange);
-        PlayerdDataController.OnGoldenNuggetsCountChanged.AddListener(OnGoldenNuggetsContChange);
+        PlayerdDataController.OnMineralsChanged.AddListener(OnMineralsChanged);
     }
 
     private void Start()
@@ -32,23 +30,17 @@ public class ExtractedMineralsView : MonoBehaviour
         _stoneImage.sprite = _stone.Sprite;
         _goldenNuggetImage.sprite = _goldenNugget.Sprite;
 
-        OnWoodsContChange(_playerData.Woods);
-        OnStonesContChange(_playerData.Stones);
-        OnGoldenNuggetsContChange(_playerData.GoldenNuggets);
+        _woodsCountText.color = _wood.Color;
+        _stonesCountText.color = _stone.Color;
+        _goldenNuggetsCountText.color = _goldenNugget.Color;
+
+        OnMineralsChanged();
     }
 
-    private void OnWoodsContChange(ulong count)
+    private void OnMineralsChanged()
     {
-        _woodsCountText.text = count.ToString();
-    }
-
-    private void OnStonesContChange(ulong count)
-    {
-        _stonesCountText.text = count.ToString();
-    }
-
-    private void OnGoldenNuggetsContChange(ulong count)
-    {
-        _goldenNuggetsCountText.text = count.ToString();
+        _woodsCountText.text = _playerData.Woods.ToString();
+        _stonesCountText.text = _playerData.Stones.ToString();
+        _goldenNuggetsCountText.text = _playerData.GoldenNuggets.ToString();
     }
 }

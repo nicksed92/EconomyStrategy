@@ -32,6 +32,24 @@ public class BuildingPlace : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < _playerData.SawMills; i++)
+        {
+            PlaceBuyedBuildings(_sawMill, _sawMillsContainer, _treesContainer, i);
+        }
+
+        for (int i = 0; i < _playerData.StoneMines; i++)
+        {
+            PlaceBuyedBuildings(_stoneMine, _stoneMinesContainer, _stonesContainer, i);
+        }
+
+        for (int i = 0; i < _playerData.GoldMines; i++)
+        {
+            PlaceBuyedBuildings(_goldMine, _goldMinesContainer, _goldOresContainer, i);
+        }
+    }
+
     private int PlaceBuilding(PlacedBuilding building, Transform buildingsContainer, Transform resourceContainer, int buldingsPlaced)
     {
         if (buldingsPlaced > resourceContainer.childCount - 1)
@@ -43,5 +61,14 @@ public class BuildingPlace : MonoBehaviour
         clone.transform.position = child.localPosition;
         child.gameObject.SetActive(false);
         return ++buldingsPlaced;
+    }
+
+    private void PlaceBuyedBuildings(PlacedBuilding building, Transform buildingsContainer, Transform resourceContainer, int buldingsPlaced)
+    {
+        var child = resourceContainer.GetChild(buldingsPlaced);
+
+        var clone = Instantiate(building, buildingsContainer);
+        clone.transform.position = child.localPosition;
+        child.gameObject.SetActive(false);
     }
 }
