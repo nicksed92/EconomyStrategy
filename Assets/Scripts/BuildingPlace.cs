@@ -30,9 +30,16 @@ public class BuildingPlace : MonoBehaviour
                 _playerData.GoldMines = PlaceBuilding(_goldMine, _goldMinesContainer, _goldOresContainer, _playerData.GoldMines);
                 break;
         }
+
+        SaveSystem.Save(_playerData);
     }
 
-    private void Start()
+    private void Awake()
+    {
+        PlayerdDataController.OnDataLoaded.AddListener(OnDataLoaded);
+    }
+
+    private void OnDataLoaded()
     {
         for (int i = 0; i < _playerData.SawMills; i++)
         {

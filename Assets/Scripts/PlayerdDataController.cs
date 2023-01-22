@@ -5,6 +5,7 @@ public class PlayerdDataController : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
 
+    public static UnityEvent OnDataLoaded = new UnityEvent();
     public static UnityEvent OnMineralsChanged = new UnityEvent();
 
     private void Awake()
@@ -14,7 +15,17 @@ public class PlayerdDataController : MonoBehaviour
 
     private void Start()
     {
-        //_playerData.Reset();
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        _playerData.Reset();
+
+        string json = SaveSystem.Load();
+        JsonUtility.FromJsonOverwrite(json, _playerData);
+
+        OnDataLoaded.Invoke();
     }
 
     private void OnMineralExtracted(Mineral mineral)
@@ -33,5 +44,7 @@ public class PlayerdDataController : MonoBehaviour
         }
 
         OnMineralsChanged.Invoke();
+
+        SaveSystem.Save(_playerData);
     }
 }

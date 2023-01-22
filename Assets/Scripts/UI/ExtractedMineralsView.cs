@@ -22,6 +22,7 @@ public class ExtractedMineralsView : MonoBehaviour
     private void Awake()
     {
         PlayerdDataController.OnMineralsChanged.AddListener(OnMineralsChanged);
+        PlayerdDataController.OnDataLoaded.AddListener(OnMineralsChanged);
     }
 
     private void Start()
