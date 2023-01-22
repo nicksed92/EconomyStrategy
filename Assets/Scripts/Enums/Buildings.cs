@@ -2,5 +2,7 @@ public enum Buildings
 {
     SawMill,
     StoneMine,
-    GoldMine
+    GoldMine,
+    FishSpot,
+    OilRig
 }

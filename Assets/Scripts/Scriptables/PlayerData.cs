@@ -9,6 +9,7 @@ public class PlayerData : ScriptableObject
     public int SawMills;
     public int StoneMines;
     public int GoldMines;
+    public int OpenRegions;
 
     public void Reset()
     {
@@ -19,5 +20,7 @@ public class PlayerData : ScriptableObject
         SawMills = 0;
         StoneMines = 0;
         GoldMines = 0;
+
+        OpenRegions = 1;
     }
 }

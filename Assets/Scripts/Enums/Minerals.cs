@@ -2,5 +2,7 @@ public enum Minerals
 {
     Wood,
     Stone,
-    GoldenNugget
+    GoldenNugget,
+    Fish,
+    Oil
 }

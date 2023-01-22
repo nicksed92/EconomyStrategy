@@ -1346,7 +1346,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1354,6 +1354,48 @@ TextureImporter:
       bones: []
       spriteID: 8ae58a203b5e5e74ca67473a8366aee9
       internalID: 802885012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MasterSimple 1_51
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09678b989fa02c64c8699985a01b9c48
+      internalID: 126300890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MasterSimple 1_59
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95870db1e3c87dc47bbadbbccf4dce6a
+      internalID: -1158783788
       vertices: []
       indices: 
       edges: []
@@ -1405,6 +1447,7 @@ TextureImporter:
       MasterSimple 1_43: -1290010014
       MasterSimple 1_47: 1516644880
       MasterSimple 1_14: -2042767607
+      MasterSimple 1_59: -1158783788
       MasterSimple 1_1: 1347336051
       MasterSimple 1_33: -781760923
       MasterSimple 1_27: 879681720
