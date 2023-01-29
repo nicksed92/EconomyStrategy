@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entity: 3
   _sprite: {fileID: 126300890, guid: 0160fedec6b84c2468a2683db539eead, type: 3}
-  _color: {r: 0.17254902, g: 0.909804, b: 0.9607844, a: 1}
+  _color: {r: 0.17254902, g: 0.909804, b: 0.9607844, a: 0.78431374}

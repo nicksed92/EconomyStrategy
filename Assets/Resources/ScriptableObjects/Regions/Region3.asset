@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53726ec594a89a24a8b1c6aef8665a67, type: 3}
   m_Name: Region3
   m_EditorClassIdentifier: 
-  _name: Desert Terrain
+  _name: DesertTerrain
+  _index: 2
   _treesCount: 7
   _stonesCount: 17
   _goldenNuggetsCount: 5

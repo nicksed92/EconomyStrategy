@@ -52,6 +52,51 @@ public class PlayerdDataController : MonoBehaviour
         OnMineralsChanged.Invoke();
     }
 
+    public void UnlockRegion(Region region)
+    {
+        for (int i = 0; i < region.RequaredMinerals.Count; i++)
+        {
+            ulong requaredMineralsCount = region.RequaredMinerals[i].Count;
+
+            switch (region.RequaredMinerals[i].Mineral.Entity)
+            {
+                case Minerals.Wood:
+                    if (_playerData.Woods < requaredMineralsCount)
+                        return;
+
+                    _playerData.Woods -= requaredMineralsCount;
+                    break;
+                case Minerals.Stone:
+                    if (_playerData.Stones < requaredMineralsCount)
+                        return;
+
+                    _playerData.Stones -= requaredMineralsCount;
+                    break;
+                case Minerals.GoldenNugget:
+                    if (_playerData.GoldenNuggets < requaredMineralsCount)
+                        return;
+
+                    _playerData.GoldenNuggets -= requaredMineralsCount;
+                    break;
+                case Minerals.Fish:
+                    if (_playerData.Fishes < requaredMineralsCount)
+                        return;
+
+                    _playerData.Fishes -= requaredMineralsCount;
+                    break;
+                case Minerals.Oil:
+                    if (_playerData.Oils < requaredMineralsCount)
+                        return;
+
+                    _playerData.Oils -= requaredMineralsCount;
+                    break;
+            }
+        }
+
+        _playerData.UnlockedRegions++;
+        OnMineralsChanged.Invoke();
+    }
+
     private void Awake()
     {
         GlobalEvents.OnMineralExtracted.AddListener(OnMineralExtracted);

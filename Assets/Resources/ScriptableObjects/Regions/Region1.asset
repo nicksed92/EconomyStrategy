@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53726ec594a89a24a8b1c6aef8665a67, type: 3}
   m_Name: Region1
   m_EditorClassIdentifier: 
-  _name: Flat Terrain
+  _name: FlatTerrain
+  _index: 0
   _treesCount: 13
   _stonesCount: 5
   _goldenNuggetsCount: 1

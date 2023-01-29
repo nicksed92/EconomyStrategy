@@ -9,6 +9,8 @@ public class CameraPosition : MonoBehaviour
     [SerializeField] private Button _rightButton;
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private Transform _blockPanel;
+    [SerializeField] private RegionBlockedView _regionBlockedView;
+    [SerializeField] private List<Region> _regions = new List<Region>();
 
     private Vector3 _startPosition;
     private int _currentPositionIndex;
@@ -20,8 +22,6 @@ public class CameraPosition : MonoBehaviour
             return;
 
         SetPosition(_mapPoints[++_currentPositionIndex]);
-
-
     }
 
     public void SetPreviosPosition()
@@ -71,8 +71,13 @@ public class CameraPosition : MonoBehaviour
         }
 
         if (_playerData.UnlockedRegions < _currentPositionIndex + 1)
+        {
+            _regionBlockedView.Init(_regions[_currentPositionIndex]);
             _blockPanel.gameObject.SetActive(true);
+        }
         else
+        {
             _blockPanel.gameObject.SetActive(false);
+        }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,10 +39,10 @@ public class BuildingTemplateView : MonoBehaviour
 
     private void Awake()
     {
-        GlobalEvents.OnMineralExtracted.AddListener(OnMineralExtracted);
+        PlayerdDataController.OnMineralsChanged.AddListener(OnMineralsChanged);
     }
 
-    private void OnMineralExtracted(Mineral mineral)
+    private void OnMineralsChanged()
     {
         SetButtonInteractable();
     }

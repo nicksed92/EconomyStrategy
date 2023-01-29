@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da86cd7234a37e4eae0efd4cd26be11, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  Woods: 817
-  Stones: 1002
-  GoldenNuggets: 991
-  Fishes: 7
-  Oils: 2
-  SawMills: 27
-  StoneMines: 39
-  GoldMines: 11
-  FishSpots: 5
-  OilRigs: 2
-  UnlockedRegions: 3
+  Woods: 0
+  Stones: 0
+  GoldenNuggets: 3
+  Fishes: 0
+  Oils: 0
+  SawMills: 0
+  StoneMines: 0
+  GoldMines: 0
+  FishSpots: 0
+  OilRigs: 0
+  UnlockedRegions: 1
