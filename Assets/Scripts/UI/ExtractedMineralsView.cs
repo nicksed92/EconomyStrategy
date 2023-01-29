@@ -50,10 +50,10 @@ public class ExtractedMineralsView : MonoBehaviour
 
     private void OnMineralsChanged()
     {
-        _woodsCountText.text = _playerData.Wood.ToString();
-        _stonesCountText.text = _playerData.Stone.ToString();
-        _goldenNuggetsCountText.text = _playerData.GoldenNugget.ToString();
-        _fishesCountText.text = _playerData.Fish.ToString();
-        _oilsCountText.text = _playerData.Oil.ToString();
+        _woodsCountText.text = _playerData.Woods.ToString();
+        _stonesCountText.text = _playerData.Stones.ToString();
+        _goldenNuggetsCountText.text = _playerData.GoldenNuggets.ToString();
+        _fishesCountText.text = _playerData.Fishes.ToString();
+        _oilsCountText.text = _playerData.Oils.ToString();
     }
 }

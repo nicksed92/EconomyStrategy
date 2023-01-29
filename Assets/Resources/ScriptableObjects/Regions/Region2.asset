@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Region2
   m_EditorClassIdentifier: 
   _name: Hilly Terrain
-  _treesCount: 0
-  _stonesCount: 0
-  _goldenNuggetsCount: 0
-  _fishesCount: 0
+  _treesCount: 7
+  _stonesCount: 17
+  _goldenNuggetsCount: 5
+  _fishesCount: 2
   _oilsCount: 0
   _requaredMinerals:
   - _mineral: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}

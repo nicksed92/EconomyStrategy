@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Region3
   m_EditorClassIdentifier: 
   _name: Desert Terrain
-  _treesCount: 0
-  _stonesCount: 0
-  _goldenNuggetsCount: 0
-  _fishesCount: 0
-  _oilsCount: 0
+  _treesCount: 7
+  _stonesCount: 17
+  _goldenNuggetsCount: 5
+  _fishesCount: 3
+  _oilsCount: 2
   _requaredMinerals:
   - _mineral: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}
     _count: 120
   - _mineral: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
     _count: 80
   - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
-    _count: 10
+    _count: 12
   - _mineral: {fileID: 11400000, guid: 44d3e2f1b79a6fd469623cb5a28c63d9, type: 2}
     _count: 10

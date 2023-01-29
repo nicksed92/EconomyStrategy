@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Region1
   m_EditorClassIdentifier: 
   _name: Flat Terrain
-  _treesCount: 0
-  _stonesCount: 0
-  _goldenNuggetsCount: 0
+  _treesCount: 13
+  _stonesCount: 5
+  _goldenNuggetsCount: 1
   _fishesCount: 0
   _oilsCount: 0
   _requaredMinerals: []

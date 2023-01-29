@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
 public class PlayerData : ScriptableObject
 {
-    public ulong Wood;
-    public ulong Stone;
-    public ulong GoldenNugget;
-    public ulong Fish;
-    public ulong Oil;
+    public ulong Woods;
+    public ulong Stones;
+    public ulong GoldenNuggets;
+    public ulong Fishes;
+    public ulong Oils;
 
     public int SawMills;
     public int StoneMines;
@@ -15,15 +15,15 @@ public class PlayerData : ScriptableObject
     public int FishSpots;
     public int OilRigs;
 
-    public int OpenRegions;
+    public int UnlockedRegions;
 
     public void Reset()
     {
-        Wood = 0;
-        Stone = 0;
-        GoldenNugget = 3;
-        Fish = 0;
-        Oil = 0;
+        Woods = 0;
+        Stones = 0;
+        GoldenNuggets = 3;
+        Fishes = 0;
+        Oils = 0;
 
         SawMills = 0;
         StoneMines = 0;
@@ -31,6 +31,6 @@ public class PlayerData : ScriptableObject
         FishSpots = 0;
         OilRigs = 0;
 
-        OpenRegions = 1;
+        UnlockedRegions = 1;
     }
 }

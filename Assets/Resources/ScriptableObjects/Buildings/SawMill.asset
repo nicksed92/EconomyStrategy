@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entity: 0
   _sprite: {fileID: 126885676, guid: 0160fedec6b84c2468a2683db539eead, type: 3}
-  _position: {x: 0, y: 0, z: 0}
   _generatedMinerals:
   - _mineral: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}
     _count: 1
     _minutes: 1
   _requaredMinerals:
   - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
-    _count: 3
+    _count: 1

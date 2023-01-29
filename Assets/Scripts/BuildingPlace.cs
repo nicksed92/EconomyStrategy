@@ -4,7 +4,8 @@ using UnityEngine;
 public class BuildingPlace : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
-    [SerializeField] private Transform _regions;
+    [SerializeField] private PlayerdDataController _playerdDataController;
+    [SerializeField] private List<Region> _regions;
 
     [Header("Здания")]
     [SerializeField] private PlacedBuilding _sawMill;
@@ -32,23 +33,41 @@ public class BuildingPlace : MonoBehaviour
         switch (building)
         {
             case Buildings.SawMill:
-                PlaceBuilding(_sawMill, _treesContainer, _sawMillsContainer, ref _playerData.SawMills);
+                PlaceBuilding(_sawMill, Buildings.SawMill, _treesContainer, _sawMillsContainer, ref _playerData.SawMills);
                 break;
             case Buildings.StoneMine:
-                PlaceBuilding(_stoneMine, _stonesContainer, _stoneMinesContainer, ref _playerData.StoneMines);
+                PlaceBuilding(_stoneMine, Buildings.StoneMine, _stonesContainer, _stoneMinesContainer, ref _playerData.StoneMines);
                 break;
             case Buildings.GoldMine:
-                PlaceBuilding(_goldMine, _goldOresContainer, _goldMinesContainer, ref _playerData.GoldMines);
+                PlaceBuilding(_goldMine, Buildings.GoldMine, _goldOresContainer, _goldMinesContainer, ref _playerData.GoldMines);
                 break;
             case Buildings.FishSpot:
-                PlaceBuilding(_fishSpot, _fishesContainer, _fishSpotsContainer, ref _playerData.FishSpots);
+                PlaceBuilding(_fishSpot, Buildings.FishSpot, _fishesContainer, _fishSpotsContainer, ref _playerData.FishSpots);
                 break;
             case Buildings.OilRig:
-                PlaceBuilding(_oilRig, _oilsContainer, _oilRigsContainer, ref _playerData.OilRigs);
+                PlaceBuilding(_oilRig, Buildings.OilRig, _oilsContainer, _oilRigsContainer, ref _playerData.OilRigs);
                 break;
         }
 
         SaveSystem.Save(_playerData);
+    }
+
+    public int GetRegionResourcesCount(int regionNumber, Buildings entity)
+    {
+        switch (entity)
+        {
+            case Buildings.SawMill:
+                return _regions[regionNumber].TreesCount;
+            case Buildings.StoneMine:
+                return _regions[regionNumber].StonesCount;
+            case Buildings.GoldMine:
+                return _regions[regionNumber].GoldenNuggetsCount;
+            case Buildings.FishSpot:
+                return _regions[regionNumber].FishesCount;
+            case Buildings.OilRig:
+                return _regions[regionNumber].OilsCount;
+            default: return 0;
+        }
     }
 
     private void Awake()
@@ -84,9 +103,16 @@ public class BuildingPlace : MonoBehaviour
         }
     }
 
-    private void PlaceBuilding(PlacedBuilding building, Transform resourcesContainer, Transform buildingsContainer, ref int buildingsCount)
+    private void PlaceBuilding(PlacedBuilding building, Buildings entity, Transform resourcesContainer, Transform buildingsContainer, ref int buildingsCount)
     {
-        if (resourcesContainer.childCount - 1 < buildingsCount)
+        var availablePlacingPoints = 0;
+
+        for (int i = 0; i < _playerData.UnlockedRegions; i++)
+        {
+            availablePlacingPoints += GetRegionResourcesCount(i, entity);
+        }
+
+        if (resourcesContainer.childCount - 1 < buildingsCount || buildingsCount == availablePlacingPoints)
             return;
 
         var clone = Instantiate(building, buildingsContainer);
@@ -94,6 +120,8 @@ public class BuildingPlace : MonoBehaviour
         clone.transform.position = position;
 
         buildingsCount++;
+
+        _playerdDataController.BuyBuilding(building.Building);
     }
 
     private void PlaceBuyedBuildings(PlacedBuilding building, Transform resourceContainer, Transform buildingsContainer, int buldingsPlaced)

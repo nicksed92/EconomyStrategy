@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3886d1d8ba3185048a11f6bc27585c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: f00560761d8c1a5449e9ccc563a053ea, type: 2}
   _nameText: {fileID: 8171431061755177838}
   _priceText: {fileID: 3026677476130736648}
   _extractionText: {fileID: 4021666487216204327}

@@ -22,6 +22,21 @@ public class BuildingsContentArrow : MonoBehaviour
         _upButton.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        var anchoredPositionY = _content.anchoredPosition.y;
+
+        if (anchoredPositionY > _minPosY)
+            _upButton.gameObject.SetActive(true);
+        else if (_upButton.gameObject.activeSelf)
+            _upButton.gameObject.SetActive(false);
+
+        if (anchoredPositionY < _maxPosY)
+            _downButton.gameObject.SetActive(true);
+        else if (_downButton.gameObject.activeSelf)
+            _downButton.gameObject.SetActive(false);
+    }
+
     private void OnUpButtonClicked()
     {
         _isUpClicked = true;
@@ -56,16 +71,5 @@ public class BuildingsContentArrow : MonoBehaviour
 
         _content.anchoredPosition = new Vector2(_content.anchoredPosition.x, _content.anchoredPosition.y + _scrollStep);
         _scrollStep = Mathf.Abs(_scrollStep);
-
-        anchoredPositionY = _content.anchoredPosition.y;
-
-        _upButton.gameObject.SetActive(false);
-        _downButton.gameObject.SetActive(false);
-
-        if (anchoredPositionY > _minPosY)
-            _upButton.gameObject.SetActive(true);
-
-        if (anchoredPositionY < _maxPosY)
-            _downButton.gameObject.SetActive(true);
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BuildingTemplateViewHolder : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class BuildingTemplateViewHolder : MonoBehaviour
 
         for (int i = 0; i < _buildings.Count; i++)
         {
-            BuildingTemplateView clone = Instantiate(_buildingTemplateViewPrefab, _buildingTemplatesViewContainer);
+            var clone = Instantiate(_buildingTemplateViewPrefab, _buildingTemplatesViewContainer);
             clone.Init(_buildings[i], _buildingPlace);
         }
     }

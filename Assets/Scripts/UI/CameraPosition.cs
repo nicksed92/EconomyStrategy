@@ -70,7 +70,7 @@ public class CameraPosition : MonoBehaviour
             _leftButton.gameObject.SetActive(true);
         }
 
-        if (_playerData.OpenRegions < _currentPositionIndex + 1)
+        if (_playerData.UnlockedRegions < _currentPositionIndex + 1)
             _blockPanel.gameObject.SetActive(true);
         else
             _blockPanel.gameObject.SetActive(false);
