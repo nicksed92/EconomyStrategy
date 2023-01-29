@@ -33,13 +33,19 @@ public class PlayerdDataController : MonoBehaviour
         switch (mineral.Entity)
         {
             case Minerals.Wood:
-                _playerData.Woods++;
+                _playerData.Wood++;
                 break;
             case Minerals.Stone:
-                _playerData.Stones++;
+                _playerData.Stone++;
                 break;
             case Minerals.GoldenNugget:
-                _playerData.GoldenNuggets++;
+                _playerData.GoldenNugget++;
+                break;
+            case Minerals.Fish:
+                _playerData.Fish++;
+                break;
+            case Minerals.Oil:
+                _playerData.Oil++;
                 break;
         }
 

@@ -10,6 +10,8 @@ public class PlacedBuilding : MonoBehaviour
     private SpriteRenderer _sprite;
     private SpriteRenderer _shadow;
 
+    public Building Building => _building;
+
     private void Start()
     {
         Init();

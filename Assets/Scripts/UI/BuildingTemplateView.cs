@@ -25,7 +25,6 @@ public class BuildingTemplateView : MonoBehaviour
         SetRequaredMineralsView(building.RequaredMinerals);
         SetGeneratedMineralsView(building.GeneratedMinerals);
 
-        //_buildButton.GetComponent<Image>().color = building.GeneratedMinerals[0].Mineral.Color;
         _buildButton.onClick.AddListener(delegate { OnBuildButtonClicked(building.Entity, buildingPlace); });
     }
 

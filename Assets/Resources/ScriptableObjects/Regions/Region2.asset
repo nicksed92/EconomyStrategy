@@ -9,17 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2757f7823e4464db6635396e00f122, type: 3}
-  m_Name: GoldMine
+  m_Script: {fileID: 11500000, guid: 53726ec594a89a24a8b1c6aef8665a67, type: 3}
+  m_Name: Region2
   m_EditorClassIdentifier: 
-  _entity: 2
-  _sprite: {fileID: -436777808, guid: 0160fedec6b84c2468a2683db539eead, type: 3}
-  _generatedMinerals:
-  - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
-    _count: 1
-    _minutes: 1
+  _name: Hilly Terrain
+  _treesCount: 0
+  _stonesCount: 0
+  _goldenNuggetsCount: 0
+  _fishesCount: 0
+  _oilsCount: 0
   _requaredMinerals:
   - _mineral: {fileID: 11400000, guid: 47cdeaa68b86d0f4c891fb038ac8a81a, type: 2}
-    _count: 6
+    _count: 50
   - _mineral: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
-    _count: 3
+    _count: 30
+  - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
+    _count: 5

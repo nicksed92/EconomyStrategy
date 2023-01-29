@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e663cf73ef3d5c74db73157bb6449cfc, type: 3}
-  m_Name: Fish
+  m_Script: {fileID: 11500000, guid: 53726ec594a89a24a8b1c6aef8665a67, type: 3}
+  m_Name: Region1
   m_EditorClassIdentifier: 
-  _entity: 3
-  _sprite: {fileID: 126300890, guid: 0160fedec6b84c2468a2683db539eead, type: 3}
-  _color: {r: 0.17254902, g: 0.909804, b: 0.9607844, a: 1}
+  _name: Flat Terrain
+  _treesCount: 0
+  _stonesCount: 0
+  _goldenNuggetsCount: 0
+  _fishesCount: 0
+  _oilsCount: 0
+  _requaredMinerals: []
