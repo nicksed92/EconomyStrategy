@@ -24,7 +24,7 @@ public class BuildingTemplateView : MonoBehaviour
         _building = building;
         _buildingPlace = buildingPlace;
 
-        _nameText.text = building.Name;
+        _nameText.text = LocalizationManager.Instance.GetText(building.Name);
         _backGround.color = building.GeneratedMinerals[0].Mineral.Color;
         _buildingSprite.sprite = building.Sprite;
         _buildingShadow.sprite = building.Sprite;

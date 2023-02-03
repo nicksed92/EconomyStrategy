@@ -119,6 +119,8 @@ public class PlayerdDataController : MonoBehaviour
 
     private void OnMineralExtracted(Mineral mineral)
     {
+        SoundManager.Instance.PlaySound("Collect");
+
         switch (mineral.Entity)
         {
             case Minerals.Wood:

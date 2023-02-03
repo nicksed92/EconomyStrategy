@@ -21,7 +21,7 @@ public class RegionBlockedView : MonoBehaviour
     public void Init(Region region)
     {
         _region = region;
-        _nameText.text = $"\"{region.Name}\" is locked";
+        _nameText.text = $"\"{LocalizationManager.Instance.GetText(region.Name)}\" {LocalizationManager.Instance.GetText("is_locked")}";
 
         ClearContainer();
 
@@ -52,6 +52,8 @@ public class RegionBlockedView : MonoBehaviour
 
         if (regions < _playerData.UnlockedRegions)
             gameObject.SetActive(false);
+
+        SoundManager.Instance.PlaySound("Upgrade");
     }
 
     private bool IsPreviousregionUnlocked()

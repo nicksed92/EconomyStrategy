@@ -122,6 +122,7 @@ public class BuildingPlace : MonoBehaviour
         buildingsCount++;
 
         _playerdDataController.BuyBuilding(building.Building);
+        SoundManager.Instance.PlaySound("Put");
     }
 
     private void PlaceBuyedBuildings(PlacedBuilding building, Transform resourceContainer, Transform buildingsContainer, int buldingsPlaced)

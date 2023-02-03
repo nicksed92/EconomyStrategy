@@ -1,0 +1,16 @@
+{
+  "price": "Price",
+  "extract": "Extract",
+  "unlock": "Unlock",
+  "is_locked": "is locked",
+  "build": "Build",
+
+  "HillyTerrain": "Hilly terrain",
+  "DesertTerrain": "Desert terrain",
+
+  "SawMill": "Sawmill",
+  "StoneMine": "Stone mine",
+  "GoldMine": "Gold mine",
+  "FishSpot": "Fish spot",
+  "OilRig": "Oil rig",
+}
