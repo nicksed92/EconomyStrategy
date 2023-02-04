@@ -4,4 +4,12 @@ mergeInto(LibraryManager.library, {
     getCurrentLanguage();
   },
 
+  GetPlayerDataExtern: function () {
+    getPlayerData();
+  },
+
+  SavePlayerDataExtern: function (data) {
+    setPlayerData(UTF8ToString(data));
+  },
+
 });

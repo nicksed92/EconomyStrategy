@@ -11,33 +11,62 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private List<Sound> _sounds = new List<Sound>();
 
     public bool IsMute { get; private set; } = false;
+    public bool IsSoundsMute { get; private set; } = false;
+    public AudioSource CurrentMusicPLayingSource { get; private set; }
 
-    public void Mute()
+    public void SetMusicVolume(float volume)
+    {
+        CurrentMusicPLayingSource.volume = volume;
+    }
+
+    public void MuteSounds()
+    {
+        foreach (var sound in _sounds)
+        {
+            sound.AudioSource.mute = true;
+        }
+
+        IsSoundsMute = true;
+    }
+
+    public void UnMuteSounds()
+    {
+        foreach (var sound in _sounds)
+        {
+            sound.AudioSource.mute = false;
+        }
+
+        IsSoundsMute = false;
+    }
+
+    public void MuteMusic()
     {
         foreach (var music in _musics)
         {
             music.AudioSource.mute = true;
         }
+    }
 
-        foreach (var sound in _sounds)
+    public void UnMuteMusic()
+    {
+        foreach (var music in _musics)
         {
-            sound.AudioSource.mute = true;
+            music.AudioSource.mute = false;
         }
+    }
+
+    public void Mute()
+    {
+        MuteMusic();
+        MuteSounds();
 
         IsMute = true;
     }
 
     public void UnMute()
     {
-        foreach (var music in _musics)
-        {
-            music.AudioSource.mute = false;
-        }
-
-        foreach (var sound in _sounds)
-        {
-            sound.AudioSource.mute = false;
-        }
+        UnMuteMusic();
+        UnMuteSounds();
 
         IsMute = false;
     }
@@ -62,6 +91,8 @@ public class SoundManager : MonoBehaviour
             {
                 music.AudioSource.Play();
                 isFound = true;
+                CurrentMusicPLayingSource = music.AudioSource;
+                break;
             }
             else
             {

@@ -4,6 +4,11 @@
   "unlock": "Unlock",
   "is_locked": "is locked",
   "build": "Build",
+  "settings": "Settings",
+  "warning": "Attention",
+  "warning_msg": "Cloud saving detected.\nWhich save do you\nwant to use?",
+  "cloud_save_title": "Cloud",
+  "local_save_title": "Local",
 
   "HillyTerrain": "Hilly terrain",
   "DesertTerrain": "Desert terrain",

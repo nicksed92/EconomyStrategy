@@ -23,9 +23,6 @@
   </div>
   <div id="unity-fullscreen-button" style="display: none;"></div>
   <script>
-
-    var unityGameInstance = null;
-
     const hideFullScreenButton = "{{{ HIDE_FULL_SCREEN_BUTTON }}}";
     const buildUrl = "Build";
     const loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
@@ -77,6 +74,8 @@
     #endif
     loadingCover.style.display = "";
 
+    var unityGameInstance = null;
+
     const script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
@@ -95,9 +94,6 @@
             unityInstance.SetFullscreen(1);
           };
         }
-
-        unityGameInstance.SendMessage('LocalizationManager', 'GetCurrentLanguageExternCallBack', ysdk.environment.i18n.lang);
-
       }).catch((message) => {
         alert(message);
       });
@@ -107,12 +103,65 @@
 
   <script src="https://yandex.ru/games/sdk/v2"></script>
   <script>
+    var ysdk = null;
+
     YaGames
     .init()
-    .then(ysdk => {
+    .then(_ysdk => {
       console.log('Yandex SDK initialized');
-      window.ysdk = ysdk;
+      window.ysdk = _ysdk;
+      ysdk = _ysdk;
+
+      unityGameInstance.SendMessage('LocalizationManager', 'GetCurrentLanguageExternCallBack', ysdk.environment.i18n.lang);
     });
+
+    var player = null;
+
+    function initPlayer(){
+      return ysdk.getPlayer().then(_player => {
+        player = _player;
+      });
+    }
+
+    function setPlayerData(data){
+      if(player == null){
+        initPlayer().then(()=>{
+          player.setData({data}).then(() => {
+            console.log("player saved data is: " + data);
+            unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'true');
+          });
+        }).catch(err => {
+          console.log("player save data error: " + err);
+          unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'false');
+        });
+      }
+      else{
+        player.setData({data}).then(() => {
+          console.log("player saved data is: " + data);
+          unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'true');
+        }).catch(err => {
+          console.log("player save data error: " + err);
+          unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'false');
+        });        
+      }
+    }
+
+    function getPlayerData(){
+      if(player == null){
+        initPlayer().then(()=>{
+          player.getData().then(data => {
+            console.log("player recived data is: " + data);
+            unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+          });
+        });
+      }
+      else{
+        player.getData().then(data => {
+          console.log("player recived data is: " + data);
+          unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+        });
+      }
+    }
   </script>
 </body>
 </html>
