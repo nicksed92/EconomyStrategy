@@ -21,6 +21,9 @@ public class FastLocalizationUI : MonoBehaviour
 
     private void OnLanguageChangeHandler()
     {
+        if (_text == null || _key == null)
+            return;
+
         _text.text = LocalizationManager.Instance.GetText(_key);
     }
 }

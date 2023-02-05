@@ -32,6 +32,14 @@ public class CameraPosition : MonoBehaviour
         SetPosition(_mapPoints[--_currentPositionIndex]);
     }
 
+    public void ResetPosition()
+    {
+        while (_currentPositionIndex > 0)
+        {
+            SetPosition(_mapPoints[--_currentPositionIndex]);
+        }
+    }
+
     private void Awake()
     {
         _leftButton.onClick.AddListener(SetPreviosPosition);

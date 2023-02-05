@@ -41,6 +41,7 @@ public class LocalizationManager : MonoBehaviour
         {
             CurrentLanguage = newLanguage.ToString();
             LoadLocalization();
+            SaveSystem.SavePlayerPrefs(SaveSystem.IsLanguageSaveKey, CurrentLanguage);
             OnLanguageChange.Invoke();
         }
         else
@@ -75,7 +76,12 @@ public class LocalizationManager : MonoBehaviour
     private void Start()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        YandexSDK.Instance.GetLanguage();
+        string lang = SaveSystem.GetPlayerPrefs(SaveSystem.IsLanguageSaveKey);
+
+        if (lang != null && lang != string.Empty)
+            OnLanguageRecived(lang);
+        else
+            YandexSDK.Instance.GetLanguage();
 #else
         OnLanguageRecived(_defaultLanguage.ToString());
 #endif

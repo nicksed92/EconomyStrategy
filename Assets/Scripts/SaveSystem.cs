@@ -6,6 +6,7 @@ public class SaveSystem
     public const string MusicVolumeKey = "MusicVolume";
     public const string SoundsMuteKey = "SoundsMute";
     public const string IsUseCloudSaveKey = "IsUseCloudSave";
+    public const string IsLanguageSaveKey = "IsLanguageSave";
     private const string SaveKey = "Save";
 
     public static void SavePlayerPrefs(string key, string value)
