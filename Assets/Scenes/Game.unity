@@ -5214,8 +5214,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -60, y: 50}
-  m_SizeDelta: {x: 80, y: 150}
+  m_AnchoredPosition: {x: -45, y: 30}
+  m_SizeDelta: {x: 60, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &212058251
 MonoBehaviour:
@@ -11702,6 +11702,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1868090889}
+        m_TargetAssemblyTypeName: PlayerdDataController, Assembly-CSharp
+        m_MethodName: SetCloudSaveToMain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &848759801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14320,6 +14332,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2101230628}
+        m_TargetAssemblyTypeName: YandexSDK, Assembly-CSharp
+        m_MethodName: SavePlayerData
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17940,15 +17964,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6509804, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1781730479, guid: 5673adc2fe30e474598abc6a69b0422c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -19868,8 +19892,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -86.05, y: -50}
-  m_SizeDelta: {x: 80, y: 150}
+  m_AnchoredPosition: {x: -60, y: -30}
+  m_SizeDelta: {x: 60, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1768564436
 MonoBehaviour:
@@ -20827,6 +20851,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad271fbf1284b04a8a0fe727cd094b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _content: {fileID: 1712330645}
+  _saveImage: {fileID: 1852940510}
+  _saveSuccessSrite: {fileID: 889301690, guid: 5673adc2fe30e474598abc6a69b0422c, type: 3}
+  _saveButton: {fileID: 1852940509}
 --- !u!222 &1817337859
 CanvasRenderer:
   m_ObjectHideFlags: 0

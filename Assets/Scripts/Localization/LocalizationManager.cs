@@ -14,23 +14,12 @@ public class LocalizationManager : MonoBehaviour
     private Dictionary<string, string> texts = new Dictionary<string, string>();
 
     public static UnityEvent OnLanguageChange = new UnityEvent();
+    public static UnityEvent OnLocalizationLoaded = new UnityEvent();
 
     public string CurrentLanguage { get; private set; }
 
     [DllImport("__Internal")]
     private static extern void GetCurrentLanguageExtern();
-
-    public void GetCurrentLanguageExternCallBack(string language)
-    {
-        if (language == null)
-            CurrentLanguage = _defaultLanguage.ToString();
-        else
-            CurrentLanguage = language;
-
-        LoadLocalization();
-
-        Debug.Log("Current language: " + CurrentLanguage);
-    }
 
     public void SetRuLanguage()
     {
@@ -80,9 +69,28 @@ public class LocalizationManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-#if !UNITY_WEBGL || !UNITY_EDITTOR
-        GetCurrentLanguageExternCallBack(null);
+        YandexSDK.OnLanguageRecived.AddListener(OnLanguageRecived);
+    }
+
+    private void Start()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        YandexSDK.Instance.GetLanguage();
+#else
+        OnLanguageRecived(_defaultLanguage.ToString());
 #endif
+    }
+
+    private void OnLanguageRecived(string language)
+    {
+        if (language == null)
+            CurrentLanguage = _defaultLanguage.ToString();
+        else
+            CurrentLanguage = language;
+
+        Debug.Log("Current language: " + CurrentLanguage);
+
+        LoadLocalization();
     }
 
     private void LoadLocalization()
@@ -95,5 +103,7 @@ public class LocalizationManager : MonoBehaviour
         texts = JsonConvert.DeserializeObject<Dictionary<string, string>>(textAsset.text);
 
         Debug.Log("Localization loaded successfully!");
+
+        OnLocalizationLoaded.Invoke();
     }
 }

@@ -5,7 +5,10 @@ public class PlayerdDataController : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
 
+    private string _saveCloudJson;
+
     public static UnityEvent OnDataLoaded = new UnityEvent();
+    public static UnityEvent OnCloudSaveApplayed = new UnityEvent();
     public static UnityEvent OnMineralsChanged = new UnityEvent();
 
     public void BuyBuilding(Building building)
@@ -97,9 +100,21 @@ public class PlayerdDataController : MonoBehaviour
         OnMineralsChanged.Invoke();
     }
 
+    public void SetCloudSaveToMain()
+    {
+        SaveSystem.SavePlayerPrefs(SaveSystem.IsUseCloudSaveKey, "true");
+
+        _playerData.Reset();
+        JsonUtility.FromJsonOverwrite(_saveCloudJson, _playerData);
+        SaveSystem.Save(_playerData);
+        OnDataLoaded.Invoke();
+        OnCloudSaveApplayed.Invoke();
+    }
+
     private void Awake()
     {
         GlobalEvents.OnMineralExtracted.AddListener(OnMineralExtracted);
+        YandexSDK.OnPlayerDataRecived.AddListener(OnPlayerDataRecived);
     }
 
     private void Start()
@@ -115,6 +130,11 @@ public class PlayerdDataController : MonoBehaviour
         JsonUtility.FromJsonOverwrite(json, _playerData);
 
         OnDataLoaded.Invoke();
+    }
+
+    private void OnPlayerDataRecived(string json)
+    {
+        _saveCloudJson = json;
     }
 
     private void OnMineralExtracted(Mineral mineral)

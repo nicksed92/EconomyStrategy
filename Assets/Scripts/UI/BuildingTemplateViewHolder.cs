@@ -8,9 +8,9 @@ public class BuildingTemplateViewHolder : MonoBehaviour
     [SerializeField] private List<Building> _buildings = new List<Building>();
     [SerializeField] private BuildingPlace _buildingPlace;
 
-    private void Start()
+    private void Awake()
     {
-        CreateViews();
+        LocalizationManager.OnLocalizationLoaded.AddListener(CreateViews);
     }
 
     private void CreateViews()

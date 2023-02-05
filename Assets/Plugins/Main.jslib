@@ -12,4 +12,8 @@ mergeInto(LibraryManager.library, {
     setPlayerData(UTF8ToString(data));
   },
 
+  GetLanguageExtern: function () {
+    getLanguage();
+  },
+
 });

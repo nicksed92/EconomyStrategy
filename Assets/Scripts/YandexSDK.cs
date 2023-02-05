@@ -1,7 +1,9 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
+using static Languages;
 
 public class YandexSDK : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class YandexSDK : MonoBehaviour
     [SerializeField] private PlayerData _playerData;
 
     public static UnityEvent<string> OnPlayerDataRecived = new UnityEvent<string>();
+    public static UnityEvent<string> OnLanguageRecived = new UnityEvent<string>();
+    public static UnityEvent OnPlayerDataSaved = new UnityEvent();
 
     [DllImport("__Internal")]
     private static extern void SavePlayerDataExtern(string data);
@@ -17,10 +21,19 @@ public class YandexSDK : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void GetPlayerDataExtern();
 
+    [DllImport("__Internal")]
+    private static extern void GetLanguageExtern();
+
+    public void SavePlayerData()
+    {
+        string data = JsonConvert.SerializeObject(_playerData);
+        SavePlayerDataExtern(data);
+    }
 
     public void SavePlayerDataCallBack(string result)
     {
-        SaveSystem.SavePlayerPrefs(SaveSystem.PlayerDataIsSaveKey, result);
+        SaveSystem.SavePlayerPrefs(SaveSystem.IsUseCloudSaveKey, result);
+        OnPlayerDataSaved.Invoke();
     }
 
     public void GetPlayerData()
@@ -31,7 +44,30 @@ public class YandexSDK : MonoBehaviour
     public void GetPlayerDataCallBack(string data)
     {
         Debug.Log("Recived player data is: " + data);
-        OnPlayerDataRecived.Invoke(data);
+        string parcedJson = "";
+        var jobj = JObject.Parse(data);
+
+        if (jobj["data"].ToString() != null && jobj["data"].ToString() != string.Empty)
+        {
+            var json = JObject.Parse(data);
+            parcedJson = GetParsedJson(json["data"].ToString());
+        }
+        else
+        {
+            SavePlayerDataCallBack("true");
+        }
+
+        OnPlayerDataRecived.Invoke(parcedJson);
+    }
+
+    public void GetLanguage()
+    {
+        GetLanguageExtern();
+    }
+
+    public void GetCurrentLanguageExternCallBack(string language)
+    {
+        OnLanguageRecived.Invoke(language);
     }
 
     private void Awake()
@@ -44,9 +80,12 @@ public class YandexSDK : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void SavePlayerData()
+    private string GetParsedJson(string json)
     {
-        string data = JsonConvert.SerializeObject(_playerData);
-        SavePlayerDataExtern(data);
+        char separator = '/';
+        json.Replace(separator, ' ');
+        Debug.Log("Parced jsoin is: " + json);
+
+        return json;
     }
 }

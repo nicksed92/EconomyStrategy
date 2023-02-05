@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SaveSystem
 {
-    public const string PlayerDataIsSaveKey = "PlayerData";
     public const string MusicVolumeKey = "MusicVolume";
     public const string SoundsMuteKey = "SoundsMute";
+    public const string IsUseCloudSaveKey = "IsUseCloudSave";
     private const string SaveKey = "Save";
 
     public static void SavePlayerPrefs(string key, string value)
@@ -25,6 +25,9 @@ public class SaveSystem
     {
         string json = JsonConvert.SerializeObject(saveData);
         PlayerPrefs.SetString(SaveKey, json);
+
+        if (GetPlayerPrefs(IsUseCloudSaveKey) == "true")
+            YandexSDK.Instance.SavePlayerData();
     }
 
     public static string Load()

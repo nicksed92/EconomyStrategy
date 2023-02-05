@@ -104,6 +104,8 @@
   <script src="https://yandex.ru/games/sdk/v2"></script>
   <script>
     var ysdk = null;
+    var player = null;
+    var language = "";
 
     YaGames
     .init()
@@ -112,10 +114,12 @@
       window.ysdk = _ysdk;
       ysdk = _ysdk;
 
-      unityGameInstance.SendMessage('LocalizationManager', 'GetCurrentLanguageExternCallBack', ysdk.environment.i18n.lang);
+      language = _ysdk.environment.i18n.lang;
     });
 
-    var player = null;
+    function getLanguage(){
+      unityGameInstance.SendMessage('YandexSDK', 'GetCurrentLanguageExternCallBack', language);
+    }
 
     function initPlayer(){
       return ysdk.getPlayer().then(_player => {
@@ -126,23 +130,15 @@
     function setPlayerData(data){
       if(player == null){
         initPlayer().then(()=>{
-          player.setData({data}).then(() => {
-            console.log("player saved data is: " + data);
+          player.setData({data}, true).then(() => {
             unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'true');
           });
-        }).catch(err => {
-          console.log("player save data error: " + err);
-          unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'false');
         });
       }
       else{
         player.setData({data}).then(() => {
-          console.log("player saved data is: " + data);
           unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'true');
-        }).catch(err => {
-          console.log("player save data error: " + err);
-          unityGameInstance.SendMessage('YandexSDK', 'SavePlayerDataCallBack', 'false');
-        });        
+        });      
       }
     }
 
@@ -150,15 +146,23 @@
       if(player == null){
         initPlayer().then(()=>{
           player.getData().then(data => {
-            console.log("player recived data is: " + data);
-            unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+            if(data.data == null){
+              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify({data: ""}));
+            }
+            else{
+              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+            }
           });
         });
       }
       else{
         player.getData().then(data => {
-          console.log("player recived data is: " + data);
-          unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+          if(data.data == null){
+              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify({data: ""}));
+            }
+            else{
+              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+            }
         });
       }
     }
