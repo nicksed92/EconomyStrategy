@@ -7,6 +7,8 @@ public class SaveSystem
     public const string SoundsMuteKey = "SoundsMute";
     public const string IsUseCloudSaveKey = "IsUseCloudSave";
     public const string IsLanguageSaveKey = "IsLanguageSave";
+    public const string IsFirstLaunchKey = "IsFirstLaunch";
+    public const string IsFeedbackShowenKey = "IsFeddbackShowen";
     private const string SaveKey = "Save";
 
     public static void SavePlayerPrefs(string key, string value)

@@ -14,6 +14,7 @@ public class YandexSDK : MonoBehaviour
     public static UnityEvent<string> OnPlayerDataRecived = new UnityEvent<string>();
     public static UnityEvent<string> OnLanguageRecived = new UnityEvent<string>();
     public static UnityEvent OnPlayerDataSaved = new UnityEvent();
+    public static UnityEvent OnVideoAdvRewarded = new UnityEvent();
 
     [DllImport("__Internal")]
     private static extern void SavePlayerDataExtern(string data);
@@ -23,6 +24,12 @@ public class YandexSDK : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void GetLanguageExtern();
+
+    [DllImport("__Internal")]
+    private static extern void ShowVideoAdvExtern();
+
+    [DllImport("__Internal")]
+    private static extern void ShowFeedbackExtern();
 
     public void SavePlayerData()
     {
@@ -60,6 +67,16 @@ public class YandexSDK : MonoBehaviour
         OnPlayerDataRecived.Invoke(parcedJson);
     }
 
+    public void ShowVideoAdv()
+    {
+        ShowVideoAdvExtern();
+    }
+
+    public void ShowVideoAdvCallBack()
+    {
+        OnVideoAdvRewarded.Invoke();
+    }
+
     public void GetLanguage()
     {
         GetLanguageExtern();
@@ -68,6 +85,16 @@ public class YandexSDK : MonoBehaviour
     public void GetCurrentLanguageExternCallBack(string language)
     {
         OnLanguageRecived.Invoke(language);
+    }
+
+    public void ShowFeedback()
+    {
+        ShowFeedbackExtern();
+    }
+
+    public void ShowFeedbackCallBack()
+    {
+        SaveSystem.SavePlayerPrefs(SaveSystem.IsFeedbackShowenKey, "true");
     }
 
     private void Awake()

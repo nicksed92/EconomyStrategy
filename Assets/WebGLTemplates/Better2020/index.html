@@ -114,6 +114,7 @@
       window.ysdk = _ysdk;
       ysdk = _ysdk;
 
+      ysdk.adv.showFullscreenAdv();
       language = _ysdk.environment.i18n.lang;
     });
 
@@ -165,6 +166,41 @@
             }
         });
       }
+    }
+
+    function showVideoAdv(){
+      ysdk.adv.showRewardedVideo({
+        callbacks: {
+          onOpen: () => {
+            console.log('Video ad open.');
+          },
+          onRewarded: () => {
+            console.log('Rewarded!');
+            unityGameInstance.SendMessage('YandexSDK', 'ShowVideoAdvCallBack');
+          },
+          onClose: () => {
+            console.log('Video ad closed.');
+          }, 
+          onError: (e) => {
+            console.log('Error while open video ad:', e);
+          }
+        }
+      });
+    }
+
+    function showFeedback(){
+      ysdk.feedback.canReview()
+        .then(({ value, reason }) => {
+            if (value) {
+                ysdk.feedback.requestReview()
+                    .then(({ feedbackSent }) => {
+                        unityGameInstance.SendMessage('YandexSDK', 'ShowFeedbackCallBack');
+                        console.log(feedbackSent);
+                    })
+            } else {
+                console.log(reason)
+            }
+        })
     }
   </script>
 </body>

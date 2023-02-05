@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlayerdDataController : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
+    [SerializeField] private ulong _goldenNuggetsRewardedCount = 3;
 
     private string _saveCloudJson;
 
@@ -115,6 +116,7 @@ public class PlayerdDataController : MonoBehaviour
     {
         GlobalEvents.OnMineralExtracted.AddListener(OnMineralExtracted);
         YandexSDK.OnPlayerDataRecived.AddListener(OnPlayerDataRecived);
+        YandexSDK.OnVideoAdvRewarded.AddListener(OnVideoAdvRewarded);
     }
 
     private void Start()
@@ -135,6 +137,13 @@ public class PlayerdDataController : MonoBehaviour
     private void OnPlayerDataRecived(string json)
     {
         _saveCloudJson = json;
+    }
+
+    private void OnVideoAdvRewarded()
+    {
+        _playerData.GoldenNuggets += _goldenNuggetsRewardedCount;
+
+        SaveSystem.Save(_playerData);
     }
 
     private void OnMineralExtracted(Mineral mineral)

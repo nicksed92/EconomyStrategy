@@ -23,3 +23,5 @@ MonoBehaviour:
     _count: 13
   - _mineral: {fileID: 11400000, guid: 818c9fba1290bf343bcb12160c8c8a4e, type: 2}
     _count: 7
+  - _mineral: {fileID: 11400000, guid: f63a68dda16b80143abe885996b22950, type: 2}
+    _count: 3

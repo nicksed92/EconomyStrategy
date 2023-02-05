@@ -16,4 +16,12 @@ mergeInto(LibraryManager.library, {
     getLanguage();
   },
 
+  ShowVideoAdvExtern: function () {
+    showVideoAdv();
+  },
+
+  ShowFeedbackExtern: function () {
+    showFeedback();
+  },  
+
 });
