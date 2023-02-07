@@ -32,22 +32,12 @@ public class BuildingTemplateView : MonoBehaviour
         SetRequaredMineralsView(building.RequaredMinerals);
         SetGeneratedMineralsView(building.GeneratedMinerals);
 
-        _buildButton.onClick.AddListener(delegate { OnBuildButtonClicked(building, buildingPlace); });
+        _buildButton.onClick.AddListener(OnBuildButtonClicked);
 
         SetButtonInteractable();
     }
 
-    private void Awake()
-    {
-        PlayerdDataController.OnMineralsChanged.AddListener(OnMineralsChanged);
-    }
-
-    private void OnMineralsChanged()
-    {
-        SetButtonInteractable();
-    }
-
-    private void SetButtonInteractable()
+    public void SetButtonInteractable()
     {
         var availablePlacingPoints = 0;
 
@@ -77,6 +67,7 @@ public class BuildingTemplateView : MonoBehaviour
                 break;
         }
 
+
         var isMineralsEnough = true;
 
         for (int i = 0; i < _building.RequaredMinerals.Count; i++)
@@ -103,12 +94,15 @@ public class BuildingTemplateView : MonoBehaviour
                     break;
             }
 
-            if (playerMineralsCount < requaredMineralsCount)
+            if (playerMineralsCount <= 0 || playerMineralsCount < requaredMineralsCount)
             {
                 isMineralsEnough = false;
                 break;
             }
         }
+
+        if (_buildButton == null)
+            return;
 
         if (buildingsCount == availablePlacingPoints || isMineralsEnough == false)
             _buildButton.interactable = false;
@@ -116,11 +110,11 @@ public class BuildingTemplateView : MonoBehaviour
             _buildButton.interactable = true;
     }
 
-    private void OnBuildButtonClicked(Building building, BuildingPlace buildingPlace)
+    private void OnBuildButtonClicked()
     {
-        buildingPlace.Place(building.Entity);
+        _buildingPlace.Place(_building.Entity);
 
-        SetButtonInteractable();
+        //SetButtonInteractable();
     }
 
     private void SetRequaredMineralsView(List<RequaredMineral> requaredMinerals)

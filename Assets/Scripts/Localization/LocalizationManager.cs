@@ -13,7 +13,7 @@ public class LocalizationManager : MonoBehaviour
 
     private Dictionary<string, string> texts = new Dictionary<string, string>();
 
-    public static UnityEvent OnLanguageChange = new UnityEvent();
+    public static UnityEvent OnLanguageChanged = new UnityEvent();
     public static UnityEvent OnLocalizationLoaded = new UnityEvent();
 
     public string CurrentLanguage { get; private set; }
@@ -42,7 +42,7 @@ public class LocalizationManager : MonoBehaviour
             CurrentLanguage = newLanguage.ToString();
             LoadLocalization();
             SaveSystem.SavePlayerPrefs(SaveSystem.IsLanguageSaveKey, CurrentLanguage);
-            OnLanguageChange.Invoke();
+            OnLanguageChanged.Invoke();
         }
         else
         {

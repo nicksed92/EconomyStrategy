@@ -16,6 +16,7 @@ public class RegionBlockedView : MonoBehaviour
     private void Awake()
     {
         PlayerdDataController.OnMineralsChanged.AddListener(OnMineralsChanged);
+        LocalizationManager.OnLanguageChanged.AddListener(OnMineralsChanged);
     }
 
     public void Init(Region region)

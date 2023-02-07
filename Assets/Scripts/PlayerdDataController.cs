@@ -12,6 +12,15 @@ public class PlayerdDataController : MonoBehaviour
     public static UnityEvent OnCloudSaveApplayed = new UnityEvent();
     public static UnityEvent OnMineralsChanged = new UnityEvent();
 
+    public void Cheat()
+    {
+        _playerData.Woods = 3244;
+        _playerData.Stones = 3234;
+        _playerData.GoldenNuggets = 456;
+        _playerData.Fishes = 122;
+        _playerData.Oils = 44;
+    }
+
     public void BuyBuilding(Building building)
     {
         for (int i = 0; i < building.RequaredMinerals.Count; i++)
@@ -144,6 +153,8 @@ public class PlayerdDataController : MonoBehaviour
         _playerData.GoldenNuggets += _goldenNuggetsRewardedCount;
 
         SaveSystem.Save(_playerData);
+
+        OnMineralsChanged.Invoke();
     }
 
     private void OnMineralExtracted(Mineral mineral)

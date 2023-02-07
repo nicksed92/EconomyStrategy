@@ -89,7 +89,9 @@ public class YandexSDK : MonoBehaviour
 
     public void ShowFeedback()
     {
+#if !UNITY_EDITOR
         ShowFeedbackExtern();
+#endif
     }
 
     public void ShowFeedbackCallBack()

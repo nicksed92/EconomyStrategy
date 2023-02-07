@@ -10,7 +10,7 @@ public class FastLocalizationUI : MonoBehaviour
 
     private void Awake()
     {
-        LocalizationManager.OnLanguageChange.AddListener(OnLanguageChangeHandler);
+        LocalizationManager.OnLanguageChanged.AddListener(OnLanguageChangeHandler);
     }
 
     private void Start()
