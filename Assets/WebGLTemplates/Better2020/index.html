@@ -101,6 +101,7 @@
     document.body.appendChild(script);
   </script>
 
+
   <script src="https://yandex.ru/games/sdk/v2"></script>
   <script>
     var ysdk = null;
@@ -159,11 +160,11 @@
       else{
         player.getData().then(data => {
           if(data.data == null){
-              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify({data: ""}));
-            }
-            else{
-              unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
-            }
+            unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify({data: ""}));
+          }
+          else{
+            unityGameInstance.SendMessage('YandexSDK', 'GetPlayerDataCallBack', JSON.stringify(data));
+          }
         });
       }
     }
@@ -190,18 +191,20 @@
 
     function showFeedback(){
       ysdk.feedback.canReview()
-        .then(({ value, reason }) => {
-            if (value) {
-                ysdk.feedback.requestReview()
-                    .then(({ feedbackSent }) => {
-                        unityGameInstance.SendMessage('YandexSDK', 'ShowFeedbackCallBack');
-                        console.log(feedbackSent);
-                    })
-            } else {
-                console.log(reason)
-            }
-        })
+      .then(({ value, reason }) => {
+        if (value) {
+          ysdk.feedback.requestReview()
+          .then(({ feedbackSent }) => {
+            unityGameInstance.SendMessage('YandexSDK', 'ShowFeedbackCallBack');
+            console.log(feedbackSent);
+          })
+        } else {
+          console.log(reason)
+        }
+      })
     }
   </script>
+
+  <script src="firebaseSDK.js"></script>
 </body>
 </html>

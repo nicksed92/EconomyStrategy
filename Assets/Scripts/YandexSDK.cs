@@ -69,12 +69,14 @@ public class YandexSDK : MonoBehaviour
 
     public void ShowVideoAdv()
     {
+        SoundManager.Instance.MuteMusic();
         ShowVideoAdvExtern();
     }
 
     public void ShowVideoAdvCallBack()
     {
         OnVideoAdvRewarded.Invoke();
+        SoundManager.Instance.UnMuteMusic();
     }
 
     public void GetLanguage()
